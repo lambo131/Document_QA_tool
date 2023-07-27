@@ -6,11 +6,7 @@ from langchain.document_loaders import WebBaseLoader
 from langchain.llms import OpenAI
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
-import os
-from dotenv import load_dotenv, find_dotenv
-import numpy as np
 
-openai_api_key =  "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"
 
 # LLM prompt
 get_ans_template = """Use the following pieces of context to answer the question at the end. 
@@ -45,8 +41,7 @@ prompt_gen_ques = PromptTemplate(
         )
 
 def load_models():
-    # load_dotenv(find_dotenv())
-    #openai_api_key = os.getenv("OPENAI_API_KEY")
+    openai_api_key = st.secrets["openai_api_key"]
     llm = OpenAI(temperature=0, openai_api_key=openai_api_key)
     openai_embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)    
     return llm, openai_embeddings
