@@ -45,7 +45,7 @@ if web_address != "":
     loaded = False
     # st.write(np.random.randint(1,10))
     session = load_web_data(web_address)
-    if session.qa_chain != None:
+    if session.qa_chain != None and session.load_successful:
         loaded = True
         got_ans = False
 

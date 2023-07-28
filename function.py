@@ -56,11 +56,13 @@ class Session:
         self.llm = llm
         self.qa_chain = None
         self.session_docs = None
+        self.load_successful = True
 
     def load_web_data(self, web_address):
         bar = st.progress(0)
         loading_feedback = st.empty()
         loading_feedback.write("loading: " + web_address)
+        self.load_successful = True
         # 1) load Document
         try:
             #st.write(f"running {np.random.randint(1,10)}")
@@ -70,6 +72,8 @@ class Session:
         except:
             loading_feedback.write(f"error loading web address...")
             bar.empty()
+            self.load_successful = False
+            return
 
         bar.progress(25)
         # 2) Split
