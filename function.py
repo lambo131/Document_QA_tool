@@ -64,9 +64,9 @@ class Session:
         loading_feedback.write("loading: " + web_address)
         self.load_successful = True
         # 1) load Document
-		loader = WebBaseLoader(web_address)
-		data = loader.load()
-		self.session_docs = data
+	loader = WebBaseLoader(web_address)
+	data = loader.load()
+	self.session_docs = data
         try:
             # st.write(f"running {np.random.randint(1,10)}")
             loader = WebBaseLoader(web_address)
