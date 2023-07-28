@@ -70,7 +70,7 @@ class Session:
             data = loader.load()
             self.session_docs = data
         except:
-            loading_feedback.write(f"error loading web address...")
+            st.write(f"error loading web address...")
             bar.empty()
             self.load_successful = False
             return
